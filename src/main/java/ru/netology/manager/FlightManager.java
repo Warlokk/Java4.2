@@ -36,8 +36,8 @@ public class FlightManager {
                 tmp[tmp.length - 1] = offer;
                 result = tmp;
             }
-            Arrays.sort(result);
         }
+        Arrays.sort(result);
         return result;
     }
 
@@ -50,8 +50,8 @@ public class FlightManager {
                 tmp[tmp.length - 1] = offer;
                 result = tmp;
             }
-            Arrays.sort(result, comparator);
         }
+        Arrays.sort(result, comparator);
         return result;
     }
 }
