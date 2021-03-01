@@ -2,6 +2,7 @@ package ru.netology.manager;
 
 import org.junit.jupiter.api.Test;
 import ru.netology.domain.FlightOffer;
+import ru.netology.domain.OffersFlightTimeComparator;
 import ru.netology.repository.FlightRepository;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,7 +16,7 @@ class FlightManagerTest {
     FlightOffer fourth = new FlightOffer(4, 2950, "KUF", "DME", 210);
     FlightOffer fifth = new FlightOffer(5, 2950, "KUF", "LED", 180);
     FlightOffer sixth = new FlightOffer(6, 8000, "KUF", "LED", 190);
-    FlightOffer seventh = new FlightOffer(7, 6000, "KUF", "LED", 160);
+    FlightOffer seventh = new FlightOffer(7, 5000, "KUF", "LED", 160);
 
     void setUp() {
         repository.save(first);
@@ -25,6 +26,7 @@ class FlightManagerTest {
         repository.save(fifth);
         repository.save(sixth);
         repository.save(seventh);
+
     }
 
     @Test
@@ -32,6 +34,15 @@ class FlightManagerTest {
         setUp();
         FlightOffer[] actual = manager.findAllThatMatches("KUF", "DME");
         FlightOffer[] expected = new FlightOffer[]{fourth, first, second};
+        assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    void shouldFindAllThatMatchesAscPriceTimeSort() {
+        setUp();
+        OffersFlightTimeComparator comparator = new OffersFlightTimeComparator();
+        FlightOffer[] actual = manager.findAllThatMatchesComparator("KUF", "LED", comparator);
+        FlightOffer[] expected = new FlightOffer[]{third, seventh, fifth, sixth};
         assertArrayEquals(expected, actual);
     }
 

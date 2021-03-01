@@ -7,6 +7,7 @@ import ru.netology.domain.FlightOffer;
 import ru.netology.repository.FlightRepository;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,4 +41,17 @@ public class FlightManager {
         return result;
     }
 
+    public FlightOffer[] findAllThatMatchesComparator(String from, String to, Comparator<FlightOffer> comparator) {
+        FlightOffer[] result = new FlightOffer[0];
+        for (FlightOffer offer : repository.getAll()) {
+            if (offer.matches(from, to)) {
+                FlightOffer[] tmp = new FlightOffer[result.length + 1];
+                System.arraycopy(result, 0, tmp, 0, result.length);
+                tmp[tmp.length - 1] = offer;
+                result = tmp;
+            }
+            Arrays.sort(result, comparator);
+        }
+        return result;
+    }
 }
