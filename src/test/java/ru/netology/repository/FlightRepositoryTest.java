@@ -23,7 +23,6 @@ class FlightRepositoryTest {
         repository.save(fifth);
         repository.save(sixth);
         repository.save(seventh);
-
     }
 
     @Test
