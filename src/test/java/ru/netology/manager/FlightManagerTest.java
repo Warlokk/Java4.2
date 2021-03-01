@@ -15,7 +15,7 @@ class FlightManagerTest {
     FlightOffer third = new FlightOffer(3, 5000, "KUF", "LED", 120);
     FlightOffer fourth = new FlightOffer(4, 2950, "KUF", "DME", 210);
     FlightOffer fifth = new FlightOffer(5, 2950, "KUF", "LED", 180);
-    FlightOffer sixth = new FlightOffer(6, 8000, "KUF", "LED", 190);
+    FlightOffer sixth = new FlightOffer(6, 5000, "KUF", "LED", 190);
     FlightOffer seventh = new FlightOffer(7, 5000, "KUF", "LED", 160);
     FlightOffer eighth = new FlightOffer(8, 7000, "KUF", "LED", 150);
     FlightOffer nineth = new FlightOffer(9, 6500, "KUF", "LED", 170);
@@ -47,7 +47,7 @@ class FlightManagerTest {
         setUp();
         OffersFlightTimeComparator comparator = new OffersFlightTimeComparator();
         FlightOffer[] actual = manager.findAllThatMatchesComparator("KUF", "LED", comparator);
-        FlightOffer[] expected = new FlightOffer[]{third, eighth, seventh, nineth, fifth, sixth};
+        FlightOffer[] expected = new FlightOffer[]{fifth, third, seventh, sixth ,nineth, eighth};
         assertArrayEquals(expected, actual);
     }
 
