@@ -38,7 +38,7 @@ class FlightManagerTest {
     }
 
     @Test
-    void shouldFindAllThatMatchesAscPriceTimeSort() {
+    void shouldFindAllThatMatchesComparatorTime() {
         setUp();
         OffersFlightTimeComparator comparator = new OffersFlightTimeComparator();
         FlightOffer[] actual = manager.findAllThatMatchesComparator("KUF", "LED", comparator);
